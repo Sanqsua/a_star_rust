@@ -64,7 +64,6 @@ async fn main() {
 
     
     //this here is needed so it doesn't recursivly have all nodes
-    /* 
     let neighbour_nodes_v : Vec<A_Star_Node> = nodes_v.to_owned();
     for x in 0..MAP_WIDTH {
         for y in 0..MAP_HEIGHT {
@@ -86,8 +85,8 @@ async fn main() {
             }
         }
     }
-    */
    
+    /*
     for x in 0..MAP_WIDTH {
         for y in 0..MAP_HEIGHT {
             if y > 0 {
@@ -108,7 +107,7 @@ async fn main() {
             }
         }
     }
-   
+   */
     
 
     /*
@@ -159,6 +158,13 @@ async fn main() {
                         false => macroquad::color::BLUE,
                     },
                 );
+                for neighbour in nodes_v[y*MAP_WIDTH+x].vec_neighbours.iter(){
+                    macroquad::shapes::draw_line((x  *NODE_SIZE+ NODE_SIZE/2) as f32, 
+                    (y * NODE_SIZE+NODE_SIZE/2) as f32, 
+                    (neighbour.u_x_pos as usize *NODE_SIZE+ NODE_SIZE/2) as f32,
+                    (neighbour.u_y_pos as usize *NODE_SIZE+ NODE_SIZE/2)as f32 , 3f32, macroquad::color::BLUE);
+
+                }
                // macroquad::shapes::draw_line(0f32 , (y*NODE_SIZE) as f32,  (MAP_WIDTH*NODE_SIZE) as f32, (y*NODE_SIZE) as f32, 10f32, macroquad::color::GREEN);
             }
                 //macroquad::shapes::draw_line((x*NODE_SIZE) as f32 , 0 as f32, (x*NODE_SIZE) as f32,  (MAP_WIDTH*NODE_SIZE) as f32, 10f32, macroquad::color::PURPLE);
